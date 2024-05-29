@@ -2,7 +2,7 @@
 #define CONSTANT_H
 
 
-const bool g_debug = true;
+const bool g_debug = false;
 
 
 

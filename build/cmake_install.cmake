@@ -1,8 +1,8 @@
-# Install script for directory: D:/lib/vscode/CMake_Test
+# Install script for directory: D:/lib/vscode/Assignment_3
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/cmake_test")
+  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/assigment_3")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("D:/lib/vscode/CMake_Test/build/_deps/googletest-build/cmake_install.cmake")
+  include("D:/lib/vscode/Assignment_3/build/_deps/googletest-build/cmake_install.cmake")
 
 endif()
 
@@ -51,5 +51,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "D:/lib/vscode/CMake_Test/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "D:/lib/vscode/Assignment_3/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

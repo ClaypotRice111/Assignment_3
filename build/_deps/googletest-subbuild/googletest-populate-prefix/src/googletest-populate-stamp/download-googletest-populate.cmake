@@ -22,14 +22,14 @@ function(check_file_hash has_hash hash_is_good)
   set("${has_hash}" TRUE PARENT_SCOPE)
 
   message(STATUS "verifying file...
-       file='D:/lib/vscode/CMake_Test/build/_deps/googletest-subbuild/googletest-populate-prefix/src/f8d7d77c06936315286eb55f8de22cd23c188571.zip'")
+       file='D:/lib/vscode/Assignment_3/build/_deps/googletest-subbuild/googletest-populate-prefix/src/f8d7d77c06936315286eb55f8de22cd23c188571.zip'")
 
-  file("" "D:/lib/vscode/CMake_Test/build/_deps/googletest-subbuild/googletest-populate-prefix/src/f8d7d77c06936315286eb55f8de22cd23c188571.zip" actual_value)
+  file("" "D:/lib/vscode/Assignment_3/build/_deps/googletest-subbuild/googletest-populate-prefix/src/f8d7d77c06936315286eb55f8de22cd23c188571.zip" actual_value)
 
   if(NOT "${actual_value}" STREQUAL "")
     set("${hash_is_good}" FALSE PARENT_SCOPE)
     message(STATUS " hash of
-    D:/lib/vscode/CMake_Test/build/_deps/googletest-subbuild/googletest-populate-prefix/src/f8d7d77c06936315286eb55f8de22cd23c188571.zip
+    D:/lib/vscode/Assignment_3/build/_deps/googletest-subbuild/googletest-populate-prefix/src/f8d7d77c06936315286eb55f8de22cd23c188571.zip
   does not match expected value
     expected: ''
       actual: '${actual_value}'")
@@ -71,32 +71,32 @@ function(sleep_before_download attempt)
   execute_process(COMMAND "${CMAKE_COMMAND}" -E sleep "${sleep_seconds}")
 endfunction()
 
-if(EXISTS "D:/lib/vscode/CMake_Test/build/_deps/googletest-subbuild/googletest-populate-prefix/src/f8d7d77c06936315286eb55f8de22cd23c188571.zip")
+if(EXISTS "D:/lib/vscode/Assignment_3/build/_deps/googletest-subbuild/googletest-populate-prefix/src/f8d7d77c06936315286eb55f8de22cd23c188571.zip")
   check_file_hash(has_hash hash_is_good)
   if(has_hash)
     if(hash_is_good)
       message(STATUS "File already exists and hash match (skip download):
-  file='D:/lib/vscode/CMake_Test/build/_deps/googletest-subbuild/googletest-populate-prefix/src/f8d7d77c06936315286eb55f8de22cd23c188571.zip'
+  file='D:/lib/vscode/Assignment_3/build/_deps/googletest-subbuild/googletest-populate-prefix/src/f8d7d77c06936315286eb55f8de22cd23c188571.zip'
   =''"
       )
       return()
     else()
       message(STATUS "File already exists but hash mismatch. Removing...")
-      file(REMOVE "D:/lib/vscode/CMake_Test/build/_deps/googletest-subbuild/googletest-populate-prefix/src/f8d7d77c06936315286eb55f8de22cd23c188571.zip")
+      file(REMOVE "D:/lib/vscode/Assignment_3/build/_deps/googletest-subbuild/googletest-populate-prefix/src/f8d7d77c06936315286eb55f8de22cd23c188571.zip")
     endif()
   else()
     message(STATUS "File already exists but no hash specified (use URL_HASH):
-  file='D:/lib/vscode/CMake_Test/build/_deps/googletest-subbuild/googletest-populate-prefix/src/f8d7d77c06936315286eb55f8de22cd23c188571.zip'
+  file='D:/lib/vscode/Assignment_3/build/_deps/googletest-subbuild/googletest-populate-prefix/src/f8d7d77c06936315286eb55f8de22cd23c188571.zip'
 Old file will be removed and new file downloaded from URL."
     )
-    file(REMOVE "D:/lib/vscode/CMake_Test/build/_deps/googletest-subbuild/googletest-populate-prefix/src/f8d7d77c06936315286eb55f8de22cd23c188571.zip")
+    file(REMOVE "D:/lib/vscode/Assignment_3/build/_deps/googletest-subbuild/googletest-populate-prefix/src/f8d7d77c06936315286eb55f8de22cd23c188571.zip")
   endif()
 endif()
 
 set(retry_number 5)
 
 message(STATUS "Downloading...
-   dst='D:/lib/vscode/CMake_Test/build/_deps/googletest-subbuild/googletest-populate-prefix/src/f8d7d77c06936315286eb55f8de22cd23c188571.zip'
+   dst='D:/lib/vscode/Assignment_3/build/_deps/googletest-subbuild/googletest-populate-prefix/src/f8d7d77c06936315286eb55f8de22cd23c188571.zip'
    timeout='none'
    inactivity timeout='none'"
 )
@@ -118,7 +118,7 @@ foreach(i RANGE ${retry_number})
 
       file(
         DOWNLOAD
-        "${url}" "D:/lib/vscode/CMake_Test/build/_deps/googletest-subbuild/googletest-populate-prefix/src/f8d7d77c06936315286eb55f8de22cd23c188571.zip"
+        "${url}" "D:/lib/vscode/Assignment_3/build/_deps/googletest-subbuild/googletest-populate-prefix/src/f8d7d77c06936315286eb55f8de22cd23c188571.zip"
         SHOW_PROGRESS
         # no TIMEOUT
         # no INACTIVITY_TIMEOUT
@@ -135,7 +135,7 @@ foreach(i RANGE ${retry_number})
         check_file_hash(has_hash hash_is_good)
         if(has_hash AND NOT hash_is_good)
           message(STATUS "Hash mismatch, removing...")
-          file(REMOVE "D:/lib/vscode/CMake_Test/build/_deps/googletest-subbuild/googletest-populate-prefix/src/f8d7d77c06936315286eb55f8de22cd23c188571.zip")
+          file(REMOVE "D:/lib/vscode/Assignment_3/build/_deps/googletest-subbuild/googletest-populate-prefix/src/f8d7d77c06936315286eb55f8de22cd23c188571.zip")
         else()
           message(STATUS "Downloading... done")
           return()

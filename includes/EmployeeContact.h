@@ -15,9 +15,9 @@ public:
     virtual void ShowContact() const;
     friend ostream& operator<<(std::ostream& outs, const EmployeeContact& show_me);
 
-    string get_tile() const;
+    string get_title() const;
     string get_department() const;
-    void set_tile(const string& new_title);
+    void set_title(const string& new_title);
     void set_department(const string& new_department);
     
     
@@ -49,7 +49,7 @@ EmployeeContact::~EmployeeContact(){
 };
 
 ostream& operator<<(std::ostream& outs, const EmployeeContact& show_me){
-    outs << setw(25) << show_me.title << setw(25) << show_me.department << setw(25) << show_me.name << setw(25) << show_me.location << setw(25) << show_me.business_phone << setw(25) << show_me.email << endl;
+    outs << show_me.title << "  " << show_me.department << "  " << show_me.name << "  " << show_me.location << "  " << show_me.business_phone << "  " << show_me.email;
     return outs;
 }
 
@@ -58,7 +58,7 @@ void EmployeeContact::ShowContact() const{
     cout << *this << endl;
 };
 
-string EmployeeContact::get_tile() const{
+string EmployeeContact::get_title() const{
     return title;
 };
 
@@ -66,7 +66,7 @@ string EmployeeContact::get_department() const{
     return department;
 };
 
-void EmployeeContact::set_tile(const string& new_title){
+void EmployeeContact::set_title(const string& new_title){
     this->title = new_title;
 };
 

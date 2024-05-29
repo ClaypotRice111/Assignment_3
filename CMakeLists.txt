@@ -1,7 +1,5 @@
 cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
-project(assignment_3)
-
-
+project(assigment_3)
 
 #. . . . . . . . . . . . . . . . . . . .
 include(GNUInstallDirs)
@@ -26,19 +24,9 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR})
 if(CMAKE_CXX_COMPILER_ID MATCHES GNU)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage")
 endif()
-
-
 #. . . . . . . . . . . . . . . . . . . .
 
-
-
 # ------------------------------------
-# GoogleTest requires at least C++11
-set(CMAKE_CXX_STANDARD 14)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-
-# Require MinGW must have posix library
 include(FetchContent)
 FetchContent_Declare(
   googletest
@@ -49,8 +37,14 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-# ------------------------------------
+# GoogleTest requires at least C++11
+set(CMAKE_CXX_STANDARD 11)
+ 
 enable_testing() 
+
+
+# ------------------------------------
+
 
 
 
@@ -62,11 +56,12 @@ FILE(GLOB_RECURSE SOURCE_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}   "${INCLUDE
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 
+
+
 ADD_EXECUTABLE(main
     main.cpp
     ${SOURCE_FILES}
 )
-
 
 ADD_EXECUTABLE(basic_test
     _tests/_test_files/basic_test.cpp
@@ -78,9 +73,5 @@ ADD_EXECUTABLE(testB
     #- - - - - - - - - - - - - - - - 
 )
 
-
 TARGET_LINK_LIBRARIES(basic_test gtest)
 TARGET_LINK_LIBRARIES(testB gtest)
-
- 
-

@@ -16,6 +16,8 @@ public:
     void Init();
     void Run();
 
+    string get_company_name();
+
 private:
     void Menu();
     int GetUserOption();
@@ -61,6 +63,10 @@ void AddressBook::Run(){
             default: std::cout << "Invalid option. Please try again.\n";
         }
     } while (option != 4);
+};
+
+string AddressBook::get_company_name(){
+    return this->company_name;
 };
 
 void AddressBook::Menu(){

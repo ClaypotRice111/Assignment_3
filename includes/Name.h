@@ -58,19 +58,17 @@ Name::~Name(){
 };
 
 bool operator==(const Name& RHS, const Name& LHS){
-    if (RHS.first_name == LHS.first_name){
-        if (RHS.first_name == LHS.last_name){
-            return true;
-        }
+    if (RHS.first_name == LHS.first_name && RHS.last_name == LHS.last_name){
+        return true;
     }
     return false;
 };
 
 bool operator<(const Name& RHS, const Name& LHS){
-    if (RHS.last_name < LHS.last_name){
+    if (RHS.first_name < LHS.first_name){
         return true;
-    }else if (RHS.first_name == LHS.first_name){
-        if(RHS.first_name<LHS.first_name){
+    }else if(RHS.first_name == LHS.first_name){
+        if(RHS.last_name < LHS.last_name){
             return true;
         }
     }
@@ -78,10 +76,10 @@ bool operator<(const Name& RHS, const Name& LHS){
 };
 
 bool operator>(const Name& RHS, const Name& LHS){
-    if (RHS.last_name > LHS.last_name){
+    if (RHS.first_name > LHS.first_name){
         return true;
-    }else if (RHS.first_name == LHS.first_name){
-        if(RHS.first_name > LHS.first_name){
+    }else if(RHS.first_name == LHS.first_name){
+        if(RHS.last_name > LHS.last_name){
             return true;
         }
     }
@@ -89,7 +87,7 @@ bool operator>(const Name& RHS, const Name& LHS){
 };
 
 ostream& operator<<(std::ostream& outs, const Name& show_me){
-    outs << "First_Name: " << show_me.first_name << "Last_Name: " << show_me.last_name << endl;
+    outs <<  show_me.first_name << " " << show_me.last_name;
     return outs;
 };
 

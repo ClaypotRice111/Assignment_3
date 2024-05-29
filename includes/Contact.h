@@ -28,13 +28,12 @@ public:
     friend ostream& operator<<(std::ostream& outs, const Contact& show_me);
     
     virtual void ShowContact();
-    void FreeMemory();
 
     Name get_name() const;
     string get_busubess_phone() const;
     string get_email() const;
     int get_location() const;
-    void set_name(const string& new_name);
+    void set_name(const Name& new_name);
     void set_busubess_phone(const string& new_phone_number);
     void set_email(const string& new_email);
     void set_location(int new_location);
@@ -65,6 +64,7 @@ Contact::Contact(){
     this->email = DEFAULT_EMAIL;
     this->location = DEFAULT_LOCATION;
     this->next = nullptr;
+    this->previous = nullptr;
 };
 
 
@@ -74,6 +74,7 @@ Contact::Contact(const string& first_name, const string& last_name, const string
     this->email = email;
     this->location = loaction;
     this->next = nullptr;
+    this->previous = nullptr;
 };
 
 
@@ -81,55 +82,34 @@ Contact::~Contact(){
     if (g_debug == true){
         cout << name << "has gone home ..."<< endl;
     }
-    //next = nullptr;
-    //previous = nullptr;
+    // next = nullptr;
+    // previous = nullptr;
 };
 
-void Contact::FreeMemory(){
-    delete next;
-    next = nullptr;
-};
 
 bool operator==(const Contact& RHS, const Contact& LHS){
-    if (RHS.name == LHS.name){
-        return true;
-    }
-    return false;
+    return (RHS.name == LHS.name);
 };
 
 bool operator!=(const Contact& RHS, const Contact& LHS){
-    if (RHS.name == LHS.name){
-        return false;
-    }
-    return true;
+    return !(RHS.name == LHS.name);
 };
 
 bool operator<(const Contact& RHS, const Contact& LHS){
-    if(RHS.name < LHS.name){
-        return true;
-    }
-    return false;
+    return (RHS.name < LHS.name);
+
 };
 
 bool operator<=(const Contact& RHS, const Contact& LHS){
-    if(RHS.name == LHS.name || RHS.name < LHS.name){ 
-        return true;
-    }
-    return false;
+    return !(RHS.name > LHS.name);
 };
 
 bool operator>(const Contact& RHS, const Contact& LHS){
-    if(RHS.name > LHS.name){
-        return true;
-    }
-    return false;
+    return (RHS.name > LHS.name);
 };
 
 bool operator>=(const Contact& RHS, const Contact& LHS){
-    if (RHS.name > LHS.name ||RHS.name == LHS.name){
-        return true;
-    }
-    return false;
+    return !(RHS.name < LHS.name);
 };
 
 Contact& Contact::operator++(){
@@ -141,7 +121,7 @@ Contact& Contact::operator--(){
 };
 
 ostream& operator<<(std::ostream& outs, const Contact& show_me){
-    outs << setw(25) << show_me.name << setw(25) << show_me.location << setw(25) << show_me.business_phone << setw(25) << show_me.email << endl;
+    outs << show_me.name << "   " << show_me.location << "   " << show_me.business_phone << "   " << show_me.email;
     return outs;
 };
 
@@ -166,7 +146,7 @@ int Contact::get_location() const{
     return location;
 };
 
-void Contact::set_name(const string& new_name){
+void Contact::set_name(const Name& new_name){
     this->name = new_name;
 };
 
@@ -188,6 +168,14 @@ void Contact::set_next(Contact* new_contact){
 
 void Contact::set_previous(Contact* new_contact){
     this->previous = new_contact;
+};
+
+Contact* Contact::get_next(){
+    return this->next;
+};
+
+Contact* Contact::get_previous(){
+    return this->previous;
 };
 
 #endif

@@ -4,19 +4,19 @@
 cmake_minimum_required(VERSION 3.5)
 
 file(MAKE_DIRECTORY
-  "D:/lib/vscode/CMake_Test/build/_deps/googletest-src"
-  "D:/lib/vscode/CMake_Test/build/_deps/googletest-build"
-  "D:/lib/vscode/CMake_Test/build/_deps/googletest-subbuild/googletest-populate-prefix"
-  "D:/lib/vscode/CMake_Test/build/_deps/googletest-subbuild/googletest-populate-prefix/tmp"
-  "D:/lib/vscode/CMake_Test/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp"
-  "D:/lib/vscode/CMake_Test/build/_deps/googletest-subbuild/googletest-populate-prefix/src"
-  "D:/lib/vscode/CMake_Test/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp"
+  "D:/lib/vscode/Assignment_3/build/_deps/googletest-src"
+  "D:/lib/vscode/Assignment_3/build/_deps/googletest-build"
+  "D:/lib/vscode/Assignment_3/build/_deps/googletest-subbuild/googletest-populate-prefix"
+  "D:/lib/vscode/Assignment_3/build/_deps/googletest-subbuild/googletest-populate-prefix/tmp"
+  "D:/lib/vscode/Assignment_3/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp"
+  "D:/lib/vscode/Assignment_3/build/_deps/googletest-subbuild/googletest-populate-prefix/src"
+  "D:/lib/vscode/Assignment_3/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp"
 )
 
 set(configSubDirs )
 foreach(subDir IN LISTS configSubDirs)
-    file(MAKE_DIRECTORY "D:/lib/vscode/CMake_Test/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/${subDir}")
+    file(MAKE_DIRECTORY "D:/lib/vscode/Assignment_3/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/${subDir}")
 endforeach()
 if(cfgdir)
-  file(MAKE_DIRECTORY "D:/lib/vscode/CMake_Test/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp${cfgdir}") # cfgdir has leading slash
+  file(MAKE_DIRECTORY "D:/lib/vscode/Assignment_3/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp${cfgdir}") # cfgdir has leading slash
 endif()

@@ -49,7 +49,7 @@ void ContractorContact::ShowContact()const{
 };
 
 ostream& operator<<(std::ostream& outs, const ContractorContact& show_me){
-    outs << setw(25) << show_me.company << setw(25) << show_me.months << setw(25) << show_me.name << setw(25) << show_me.location << setw(25) << show_me.business_phone << setw(25) << show_me.email << endl;
+    outs << show_me.company << "    " << show_me.months << "    " << show_me.name << "    " << show_me.location << "    " << show_me.business_phone << "    " << show_me.email;
     return outs;
 };
 

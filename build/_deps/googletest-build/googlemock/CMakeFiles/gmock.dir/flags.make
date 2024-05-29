@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = @CMakeFiles/gmock.dir/includes_CXX.rsp
 
-CXX_FLAGS =  -fprofile-arcs -ftest-coverage -g -std=c++14 -Wall -Wshadow -Wundef -DGTEST_HAS_PTHREAD=0 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
+CXX_FLAGS =  -fprofile-arcs -ftest-coverage -g -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=0 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
 

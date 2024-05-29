@@ -56,10 +56,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = D:\lib\vscode\CMake_Test
+CMAKE_SOURCE_DIR = D:\lib\vscode\Assignment_3
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = D:\lib\vscode\CMake_Test\build
+CMAKE_BINARY_DIR = D:\lib\vscode\Assignment_3\build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -141,14 +141,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /d D:\lib\vscode\CMake_Test\build && $(CMAKE_COMMAND) -E cmake_progress_start D:\lib\vscode\CMake_Test\build\CMakeFiles D:\lib\vscode\CMake_Test\build\_deps\googletest-build\\CMakeFiles\progress.marks
-	cd /d D:\lib\vscode\CMake_Test\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 _deps/googletest-build/all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\lib\vscode\CMake_Test\build\CMakeFiles 0
+	cd /d D:\lib\vscode\Assignment_3\build && $(CMAKE_COMMAND) -E cmake_progress_start D:\lib\vscode\Assignment_3\build\CMakeFiles D:\lib\vscode\Assignment_3\build\_deps\googletest-build\\CMakeFiles\progress.marks
+	cd /d D:\lib\vscode\Assignment_3\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 _deps/googletest-build/all
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\lib\vscode\Assignment_3\build\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /d D:\lib\vscode\CMake_Test\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 _deps/googletest-build/clean
+	cd /d D:\lib\vscode\Assignment_3\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 _deps/googletest-build/clean
 .PHONY : clean
 
 # The main clean target
@@ -157,17 +157,17 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /d D:\lib\vscode\CMake_Test\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 _deps/googletest-build/preinstall
+	cd /d D:\lib\vscode\Assignment_3\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 _deps/googletest-build/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /d D:\lib\vscode\CMake_Test\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 _deps/googletest-build/preinstall
+	cd /d D:\lib\vscode\Assignment_3\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 _deps/googletest-build/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /d D:\lib\vscode\CMake_Test\build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 1
+	cd /d D:\lib\vscode\Assignment_3\build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 1
 .PHONY : depend
 
 # Help Target
@@ -194,6 +194,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /d D:\lib\vscode\CMake_Test\build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 0
+	cd /d D:\lib\vscode\Assignment_3\build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

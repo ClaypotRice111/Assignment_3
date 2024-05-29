@@ -1,5 +1,5 @@
-libdir=C:/Program Files (x86)/cmake_test/lib
-includedir=C:/Program Files (x86)/cmake_test/include
+libdir=C:/Program Files (x86)/assigment_3/lib
+includedir=C:/Program Files (x86)/assigment_3/include
 
 Name: gmock_main
 Description: GoogleMock (with main() function)
