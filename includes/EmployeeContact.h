@@ -13,7 +13,6 @@ public:
     virtual ~EmployeeContact();
 
     virtual void ShowContact() const;
-    friend ostream& operator<<(std::ostream& outs, const EmployeeContact& show_me);
 
     string get_title() const;
     string get_department() const;
@@ -43,19 +42,12 @@ EmployeeContact::EmployeeContact(const string& first_name, const string& last_na
 };
 
 EmployeeContact::~EmployeeContact(){
-    if (g_debug == true){
+    if (g_prompts)
         cout << name << "has gone home ..."<< endl;
-    }
 };
 
-ostream& operator<<(std::ostream& outs, const EmployeeContact& show_me){
-    outs << show_me.title << "  " << show_me.department << "  " << show_me.name << "  " << show_me.location << "  " << show_me.business_phone << "  " << show_me.email;
-    return outs;
-}
-
-
 void EmployeeContact::ShowContact() const{
-    cout << *this << endl;
+    cout << name << "    " << title << "    " << department << "    " << " Room" << location << "    " << business_phone << "    " << email << endl;
 };
 
 string EmployeeContact::get_title() const{

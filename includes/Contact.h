@@ -4,44 +4,45 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
-#include "constant.h"
 #include "Name.h"
 
 class Contact{
 public:
+    //static datas
     static const string DEFAULT_BUSINESS_PHONE;
     static const string DEFAULT_EMAIL;
     static const int DEFAULT_LOCATION;
 
+    // 3 COTR
     Contact();
     Contact(const string& first_name, const string& last_name, const string& business_phone, const string& email,const int& loaction);
     virtual ~Contact();
 
-    friend bool operator==(const Contact& RHS, const Contact& LHS);
-    friend bool operator!=(const Contact& RHS, const Contact& LHS);
-    friend bool operator<(const Contact& RHS, const Contact& LHS);
-    friend bool operator<=(const Contact& RHS, const Contact& LHS);
-    friend bool operator>(const Contact& RHS, const Contact& LHS);
-    friend bool operator>=(const Contact& RHS, const Contact& LHS);
-    Contact& operator++();
-    Contact& operator--();
-    friend ostream& operator<<(std::ostream& outs, const Contact& show_me);
-    
-    virtual void ShowContact();
+    // operator functions
+    friend bool operator==(const Contact& left, const Contact& right);
+    friend bool operator!=(const Contact& left, const Contact& right);
+    friend bool operator<(const Contact& left, const Contact& right);
+    friend bool operator<=(const Contact& left, const Contact& right);
+    friend bool operator>(const Contact& left, const Contact& right);
+    friend bool operator>=(const Contact& left, const Contact& right);
 
+    // print functions
+    friend ostream& operator<<(std::ostream& outs, const Contact& show_me);
+    virtual void ShowContact() const;
+
+    // access functions
     Name get_name() const;
-    string get_busubess_phone() const;
+    string get_business_phone() const;
     string get_email() const;
     int get_location() const;
     void set_name(const Name& new_name);
-    void set_busubess_phone(const string& new_phone_number);
+    void set_business_phone(const string& new_phone_number);
     void set_email(const string& new_email);
     void set_location(int new_location);
 
     void set_next(Contact* new_contact);
-    void set_previous(Contact* new_contact);
     Contact* get_next();
-    Contact* get_previous();
+
 
 protected:
     Name name;
@@ -51,7 +52,6 @@ protected:
 
 private:
     Contact* next;
-    Contact* previous;
 };
 
 const string Contact::DEFAULT_BUSINESS_PHONE = "1-408-222-8888";
@@ -59,12 +59,10 @@ const string Contact::DEFAULT_EMAIL = "jamesw@tpcommunications.com";
 const int Contact::DEFAULT_LOCATION = 0;
 
 Contact::Contact(){
-    this->name = Name();
     this->business_phone = DEFAULT_BUSINESS_PHONE;
     this->email = DEFAULT_EMAIL;
     this->location = DEFAULT_LOCATION;
     this->next = nullptr;
-    this->previous = nullptr;
 };
 
 
@@ -74,50 +72,39 @@ Contact::Contact(const string& first_name, const string& last_name, const string
     this->email = email;
     this->location = loaction;
     this->next = nullptr;
-    this->previous = nullptr;
 };
 
 
 Contact::~Contact(){
-    if (g_debug == true){
+    if (g_prompts)
         cout << name << "has gone home ..."<< endl;
-    }
-    // next = nullptr;
-    // previous = nullptr;
-};
-
-
-bool operator==(const Contact& RHS, const Contact& LHS){
-    return (RHS.name == LHS.name);
-};
-
-bool operator!=(const Contact& RHS, const Contact& LHS){
-    return !(RHS.name == LHS.name);
-};
-
-bool operator<(const Contact& RHS, const Contact& LHS){
-    return (RHS.name < LHS.name);
 
 };
 
-bool operator<=(const Contact& RHS, const Contact& LHS){
-    return !(RHS.name > LHS.name);
+
+bool operator==(const Contact& left, const Contact& right){
+    return (left.name == right.name);
 };
 
-bool operator>(const Contact& RHS, const Contact& LHS){
-    return (RHS.name > LHS.name);
+bool operator!=(const Contact& left, const Contact& right){
+    return !(left.name == right.name);
 };
 
-bool operator>=(const Contact& RHS, const Contact& LHS){
-    return !(RHS.name < LHS.name);
+bool operator<(const Contact& left, const Contact& right){
+    return (left.name < right.name);
+
 };
 
-Contact& Contact::operator++(){
-    return *this->next;
+bool operator<=(const Contact& left, const Contact& right){
+    return !(left.name > right.name);
 };
 
-Contact& Contact::operator--(){
-    return *this->previous;
+bool operator>(const Contact& left, const Contact& right){
+    return (left.name > right.name);
+};
+
+bool operator>=(const Contact& left, const Contact& right){
+    return !(left.name < right.name);
 };
 
 ostream& operator<<(std::ostream& outs, const Contact& show_me){
@@ -125,8 +112,8 @@ ostream& operator<<(std::ostream& outs, const Contact& show_me){
     return outs;
 };
 
-void Contact::ShowContact(){
-    cout << *this <<endl;
+void Contact::ShowContact() const{
+    cout << name << "   " << location << "   " << business_phone << "   " << email << endl;
 };
 
 
@@ -134,7 +121,7 @@ Name Contact::get_name() const{
     return name;
 };
 
-string Contact::get_busubess_phone() const{
+string Contact::get_business_phone() const{
     return business_phone;
 };
 
@@ -150,7 +137,7 @@ void Contact::set_name(const Name& new_name){
     this->name = new_name;
 };
 
-void Contact::set_busubess_phone(const string& new_phone_number){
+void Contact::set_business_phone(const string& new_phone_number){
     this->business_phone = new_phone_number;
 };
 
@@ -166,16 +153,9 @@ void Contact::set_next(Contact* new_contact){
     this->next = new_contact;
 };
 
-void Contact::set_previous(Contact* new_contact){
-    this->previous = new_contact;
-};
-
 Contact* Contact::get_next(){
     return this->next;
 };
 
-Contact* Contact::get_previous(){
-    return this->previous;
-};
 
 #endif

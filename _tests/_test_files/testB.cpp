@@ -8,26 +8,12 @@
 
 //------------------------------------------------------------------------------------------
 //Files we are testing:
-
+#include "../../includes/AddressBook.h"
 
 
 //------------------------------------------------------------------------------------------
 
 using namespace std;
-
-using namespace std;
-
-bool test_template(){
-
-  
-  return true;
-}
-
-
-TEST(TEST_TEMPLATE, TestTemplate) {
-  bool success = test_template();
-  EXPECT_EQ(success, true);
-}
 
 
 

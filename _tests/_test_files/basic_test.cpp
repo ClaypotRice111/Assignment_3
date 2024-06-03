@@ -14,312 +14,355 @@
 //------------------------------------------------------------------------------------------
 
 using namespace std;
-// name class
 
+class OutputCapturer {
+public:
+    OutputCapturer() : old_buf(std::cout.rdbuf()), ss() {
+        std::cout.rdbuf(ss.rdbuf());
+    }
+    ~OutputCapturer() {
+        std::cout.rdbuf(old_buf);
+    }
+    std::string getOutput() const {
+        return ss.str();
+    }
+private:
+    std::stringstream ss;
+    std::streambuf* old_buf;
+};
+
+
+TEST(NameTest, DefaultConstructor) {
+    Name n;
+    EXPECT_EQ(n, Name(Name::DEFAULT_NAME, Name::DEFAULT_NAME));
+}
+
+TEST(NameTest, ParameterizedConstructor) {
+    Name n("John", "Doe");
+    EXPECT_EQ(n, Name("John", "Doe"));
+}
 
 TEST(NameTest, EqualityOperator) {
-    Name name1("John", "Doe");
-    Name name2("John", "Doe");
-    Name name3("Jane", "Doe");
-
-    EXPECT_TRUE(name1 == name2);
-    EXPECT_FALSE(name1 == name3);
+    Name n1("Jane", "Doe");
+    Name n2("Jane", "Doe");
+    EXPECT_EQ(n1, n2);
 }
 
 TEST(NameTest, LessThanOperator) {
-    Name name1("John", "Doe");
-    Name name2("Jane", "Doe");
-    Name name3("John", "Smith");
-
-    EXPECT_TRUE(name2 < name1);
-    EXPECT_FALSE(name1 < name2);
-    EXPECT_TRUE(name1 < name3);
+    Name n1("Alice", "Smith");
+    Name n2("Bob", "Smith");
+    Name n3("Alice", "Brown");
+    EXPECT_LT(n3, n1);
+    EXPECT_LT(n1, n2);
 }
 
 TEST(NameTest, GreaterThanOperator) {
-    Name name1("John", "Doe");
-    Name name2("Jane", "Doe");
-    Name name3("John", "Smith");
-
-    EXPECT_TRUE(name1 > name2);
-    EXPECT_FALSE(name2 > name1);
-    EXPECT_FALSE(name1 > name3);
+    Name n1("Alice", "Smith");
+    Name n2("Bob", "Smith");
+    Name n3("Alice", "Brown");
+    EXPECT_GT(n1, n3);
+    EXPECT_GT(n2, n1);
 }
 
-TEST(NameTest, StreamOperator) {
-    Name name("John", "Doe");
-    std::ostringstream oss;
-    oss << name;
-    EXPECT_EQ(oss.str(), "John Doe");
+TEST(NameTest, OstreamOperator) {
+    Name n("John", "Doe");
+    std::stringstream ss;
+    ss << n;
+    EXPECT_EQ(ss.str(), "John Doe");
 }
 
-
-
-// contact class
-
-
+// Test the default constructor
 TEST(ContactTest, DefaultConstructor) {
-    Contact contact;
-    EXPECT_EQ(contact.get_name(), Name());
-    EXPECT_EQ(contact.get_busubess_phone(), Contact::DEFAULT_BUSINESS_PHONE);
-    EXPECT_EQ(contact.get_email(), Contact::DEFAULT_EMAIL);
-    EXPECT_EQ(contact.get_location(), Contact::DEFAULT_LOCATION);
+    Contact c;
+    EXPECT_EQ(c.get_name(), Name(Name::DEFAULT_NAME, Name::DEFAULT_NAME));
+    EXPECT_EQ(c.get_business_phone(), Contact::DEFAULT_BUSINESS_PHONE);
+    EXPECT_EQ(c.get_email(), Contact::DEFAULT_EMAIL);
+    EXPECT_EQ(c.get_location(), Contact::DEFAULT_LOCATION);
 }
 
+// Test the parameterized constructor
 TEST(ContactTest, ParameterizedConstructor) {
-    Contact contact("John", "Doe", "123-456-7890", "john.doe@example.com", 42);
-    EXPECT_EQ(contact.get_name(), Name("John", "Doe"));
-    EXPECT_EQ(contact.get_busubess_phone(), "123-456-7890");
-    EXPECT_EQ(contact.get_email(), "john.doe@example.com");
-    EXPECT_EQ(contact.get_location(), 42);
+    Contact c("John", "Doe", "123-456-7890", "john.doe@example.com", 1);
+    EXPECT_EQ(c.get_name(), Name("John", "Doe"));
+    EXPECT_EQ(c.get_business_phone(), "123-456-7890");
+    EXPECT_EQ(c.get_email(), "john.doe@example.com");
+    EXPECT_EQ(c.get_location(), 1);
 }
 
-TEST(ContactTest, SettersAndGetters) {
-    Contact contact;
-    contact.set_name(Name("Jane", "Smith"));
-    contact.set_busubess_phone("987-654-3210");
-    contact.set_email("jane.smith@example.com");
-    contact.set_location(24);
-
-    EXPECT_EQ(contact.get_name(), Name("Jane", "Smith"));
-    EXPECT_EQ(contact.get_busubess_phone(), "987-654-3210");
-    EXPECT_EQ(contact.get_email(), "jane.smith@example.com");
-    EXPECT_EQ(contact.get_location(), 24);
+// Test the equality operator
+TEST(ContactTest, EqualityOperator) {
+    Contact c1("Jane", "Doe", "123-456-7890", "jane.doe@example.com", 1);
+    Contact c2("Jane", "Doe", "123-456-7890", "jane.doe@example.com", 1);
+    EXPECT_EQ(c1, c2);
 }
 
-TEST(ContactTest, ComparisonOperators) {
-    Contact contact1("Alice", "Wonderland", "111-222-3333", "alice@example.com", 1);
-    Contact contact2("Bob", "Builder", "222-333-4444", "bob@example.com", 2);
-
-    EXPECT_FALSE(contact1 == contact2);
-    EXPECT_TRUE(contact1 != contact2);
-    EXPECT_TRUE(contact1 < contact2);
-    EXPECT_TRUE(contact1 <= contact2);
-    EXPECT_FALSE(contact1 > contact2);
-    EXPECT_FALSE(contact1 >= contact2);
-
-    Contact contact3("Alice", "Wonderland", "111-222-3333", "alice@example.com", 1);
-    EXPECT_TRUE(contact1 == contact3);
-    EXPECT_FALSE(contact1 != contact3);
-    EXPECT_FALSE(contact1 < contact3);
-    EXPECT_TRUE(contact1 <= contact3);
-    EXPECT_FALSE(contact1 > contact3);
-    EXPECT_TRUE(contact1 >= contact3);
+// Test the inequality operator
+TEST(ContactTest, InequalityOperator) {
+    Contact c1("Jane", "Doe", "123-456-7890", "jane.doe@example.com", 1);
+    Contact c2("John", "Doe", "123-456-7890", "john.doe@example.com", 1);
+    EXPECT_NE(c1, c2);
 }
 
-TEST(ContactTest, IncrementDecrementOperators) {
-    Contact contact1("Alice", "Wonderland", "111-222-3333", "alice@example.com", 1);
-    Contact contact2("Bob", "Builder", "222-333-4444", "bob@example.com", 2);
-
-    contact1.set_next(&contact2);
-    contact2.set_previous(&contact1);
-
-    EXPECT_EQ(++contact1, contact2);
-    EXPECT_EQ(--contact2, contact1);
+// Test the less than operator
+TEST(ContactTest, LessThanOperator) {
+    Contact c1("Alice", "Smith", "123-456-7890", "alice.smith@example.com", 1);
+    Contact c2("Bob", "Smith", "123-456-7890", "bob.smith@example.com", 1);
+    EXPECT_LT(c1, c2);
 }
 
-TEST(ContactTest, StreamOperator) {
-    Contact contact("Alice", "Wonderland", "111-222-3333", "alice@example.com", 1);
-    std::ostringstream oss;
-    oss << contact;
-    EXPECT_EQ(oss.str(), "Alice Wonderland   1   111-222-3333   alice@example.com");
+// Test the greater than operator
+TEST(ContactTest, GreaterThanOperator) {
+    Contact c1("Alice", "Smith", "123-456-7890", "alice.smith@example.com", 1);
+    Contact c2("Bob", "Smith", "123-456-7890", "bob.smith@example.com", 1);
+    EXPECT_GT(c2, c1);
 }
 
-TEST(ContactTest, ShowContact) {
-    Contact contact("Alice", "Wonderland", "111-222-3333", "alice@example.com", 1);
-    std::ostringstream oss;
-    std::streambuf* coutbuf = std::cout.rdbuf(); //save old buf
-    std::cout.rdbuf(oss.rdbuf()); //redirect std::cout to oss
-    contact.ShowContact();
-    std::cout.rdbuf(coutbuf); //reset to standard output
-    EXPECT_EQ(oss.str(), "Alice Wonderland   1   111-222-3333   alice@example.com\n");
-}
-
-// employeecontact class
-
-TEST(EmployeeContactTest, DefaultConstructor) {
-    EmployeeContact contact;
-
-    EXPECT_EQ(contact.get_title(), EmployeeContact::DEFAULT_TITLE);
-    EXPECT_EQ(contact.get_department(), EmployeeContact::DEFAULT_DEPARTMENT);
-}
-
-TEST(EmployeeContactTest, ParameterizedConstructor) {
-    std::string first_name = "John";
-    std::string last_name = "Doe";
-    std::string business_phone = "123-456-7890";
-    std::string email = "john.doe@example.com";
-    int location = 1;
-    std::string title = "Manager";
-    std::string department = "Sales";
-
-    EmployeeContact contact(first_name, last_name, business_phone, email, location, title, department);
-
-    EXPECT_EQ(contact.get_title(), title);
-    EXPECT_EQ(contact.get_department(), department);
-}
-
-TEST(EmployeeContactTest, SetAndGetTitle) {
-    EmployeeContact contact;
-    std::string new_title = "Director";
-
-    contact.set_title(new_title);
-
-    EXPECT_EQ(contact.get_title(), new_title);
-}
-
-TEST(EmployeeContactTest, SetAndGetDepartment) {
-    EmployeeContact contact;
-    std::string new_department = "Marketing";
-
-    contact.set_department(new_department);
-
-    EXPECT_EQ(contact.get_department(), new_department);
-}
-
-TEST(EmployeeContactTest, ShowContact) {
-    EmployeeContact contact("Jane", "Doe", "321-654-0987", "jane.doe@example.com", 2, "Developer", "Engineering");
-
-    testing::internal::CaptureStdout();
-    contact.ShowContact();
-    std::string output = testing::internal::GetCapturedStdout();
-
-    std::string expected_output = "Developer  Engineering  Jane Doe  2  321-654-0987  jane.doe@example.com\n";
-    EXPECT_EQ(output, expected_output);
-}
-
-TEST(EmployeeContactTest, OutputStreamOperator) {
-    EmployeeContact contact("Alice", "Smith", "555-555-5555", "alice.smith@example.com", 3, "HR", "Human Resources");
-
+// Test the ostream operator
+TEST(ContactTest, OstreamOperator) {
+    Contact c("John", "Doe", "123-456-7890", "john.doe@example.com", 1);
     std::stringstream ss;
-    ss << contact;
-
-    std::string expected_output = "HR  Human Resources  Alice Smith  3  555-555-5555  alice.smith@example.com";
-    EXPECT_EQ(ss.str(), expected_output);
+    ss << c;
+    EXPECT_EQ(ss.str(), "John Doe   1   123-456-7890   john.doe@example.com");
 }
 
-//ContractorContact class
+// Test the accessor and mutator methods
+TEST(ContactTest, AccessorMutator) {
+    Contact c;
+    c.set_name(Name("John", "Doe"));
+    c.set_business_phone("123-456-7890");
+    c.set_email("john.doe@example.com");
+    c.set_location(1);
 
+    EXPECT_EQ(c.get_name(), Name("John", "Doe"));
+    EXPECT_EQ(c.get_business_phone(), "123-456-7890");
+    EXPECT_EQ(c.get_email(), "john.doe@example.com");
+    EXPECT_EQ(c.get_location(), 1);
+}
+
+
+// Test the default constructor
 TEST(ContractorContactTest, DefaultConstructor) {
-    ContractorContact contact;
-
-    EXPECT_EQ(contact.get_company(), ContractorContact::DEFAULT_COMPANY);
-    EXPECT_EQ(contact.get_month(), ContractorContact::DEFAULT_MONTH);
+    ContractorContact cc;
+    EXPECT_EQ(cc.get_name(), Name(Name::DEFAULT_NAME, Name::DEFAULT_NAME));
+    EXPECT_EQ(cc.get_business_phone(), Contact::DEFAULT_BUSINESS_PHONE);
+    EXPECT_EQ(cc.get_email(), Contact::DEFAULT_EMAIL);
+    EXPECT_EQ(cc.get_location(), Contact::DEFAULT_LOCATION);
+    EXPECT_EQ(cc.get_company(), ContractorContact::DEFAULT_COMPANY);
+    EXPECT_EQ(cc.get_month(), ContractorContact::DEFAULT_MONTH);
 }
 
+// Test the parameterized constructor
 TEST(ContractorContactTest, ParameterizedConstructor) {
-    std::string first_name = "John";
-    std::string last_name = "Doe";
-    int months = 6;
-    std::string company = "XYZ Inc";
-    int location = 1;
-    std::string business_phone = "123-456-7890";
-    std::string email = "john.doe@example.com";
-
-    ContractorContact contact(first_name, last_name, months, company, location, business_phone, email);
-
-    EXPECT_EQ(contact.get_company(), company);
-    EXPECT_EQ(contact.get_month(), months);
+    ContractorContact cc("John", "Doe", 12, "TechCorp", 1, "123-456-7890", "john.doe@example.com");
+    EXPECT_EQ(cc.get_name(), Name("John", "Doe"));
+    EXPECT_EQ(cc.get_business_phone(), "123-456-7890");
+    EXPECT_EQ(cc.get_email(), "john.doe@example.com");
+    EXPECT_EQ(cc.get_location(), 1);
+    EXPECT_EQ(cc.get_company(), "TechCorp");
+    EXPECT_EQ(cc.get_month(), 12);
 }
 
-TEST(ContractorContactTest, SetAndGetCompany) {
-    ContractorContact contact;
-    std::string new_company = "New Company";
-
-    contact.set_company(new_company);
-
-    EXPECT_EQ(contact.get_company(), new_company);
-}
-
-TEST(ContractorContactTest, SetAndGetMonth) {
-    ContractorContact contact;
-    int new_months = 12;
-
-    contact.set_month(new_months);
-
-    EXPECT_EQ(contact.get_month(), new_months);
-}
-
+// Test the ShowContact method
 TEST(ContractorContactTest, ShowContact) {
-    ContractorContact contact("Jane", "Doe", 3, "Tech Solutions", 2, "321-654-0987", "jane.doe@example.com");
-
-    testing::internal::CaptureStdout();
-    contact.ShowContact();
-    std::string output = testing::internal::GetCapturedStdout();
-
-    std::string expected_output = "Tech Solutions    3    Jane Doe    2        jane.doe@example.com\n";
-    EXPECT_EQ(output, expected_output);
+    ContractorContact cc("John", "Doe", 12, "TechCorp", 1, "123-456-7890", "john.doe@example.com");
+    OutputCapturer capturer;
+    cc.ShowContact();
+    std::string output = capturer.getOutput();
+    EXPECT_EQ(output, "John Doe    TechCorp    12 months (contractor)     Room 1    123-456-7890    john.doe@example.com\n");
 }
 
-TEST(ContractorContactTest, OutputStreamOperator) {
-    ContractorContact contact("Alice", "Smith", 6, "Software Inc", 3, "555-555-5555", "alice.smith@example.com");
+// Test the accessor and mutator methods
+TEST(ContractorContactTest, AccessorMutator) {
+    ContractorContact cc;
+    cc.set_name(Name("John", "Doe"));
+    cc.set_business_phone("123-456-7890");
+    cc.set_email("john.doe@example.com");
+    cc.set_location(1);
+    cc.set_company("TechCorp");
+    cc.set_month(12);
+
+    EXPECT_EQ(cc.get_name(), Name("John", "Doe"));
+    EXPECT_EQ(cc.get_business_phone(), "123-456-7890");
+    EXPECT_EQ(cc.get_email(), "john.doe@example.com");
+    EXPECT_EQ(cc.get_location(), 1);
+    EXPECT_EQ(cc.get_company(), "TechCorp");
+    EXPECT_EQ(cc.get_month(), 12);
+}
+
+
+// Test the default constructor
+TEST(EmployeeContactTest, DefaultConstructor) {
+    EmployeeContact ec;
+    EXPECT_EQ(ec.get_name(), Name(Name::DEFAULT_NAME, Name::DEFAULT_NAME));
+    EXPECT_EQ(ec.get_business_phone(), Contact::DEFAULT_BUSINESS_PHONE);
+    EXPECT_EQ(ec.get_email(), Contact::DEFAULT_EMAIL);
+    EXPECT_EQ(ec.get_location(), Contact::DEFAULT_LOCATION);
+    EXPECT_EQ(ec.get_title(), EmployeeContact::DEFAULT_TITLE);
+    EXPECT_EQ(ec.get_department(), EmployeeContact::DEFAULT_DEPARTMENT);
+}
+
+// Test the parameterized constructor
+TEST(EmployeeContactTest, ParameterizedConstructor) {
+    EmployeeContact ec("John", "Doe", "123-456-7890", "john.doe@example.com", 1, "Manager", "HR");
+    EXPECT_EQ(ec.get_name(), Name("John", "Doe"));
+    EXPECT_EQ(ec.get_business_phone(), "123-456-7890");
+    EXPECT_EQ(ec.get_email(), "john.doe@example.com");
+    EXPECT_EQ(ec.get_location(), 1);
+    EXPECT_EQ(ec.get_title(), "Manager");
+    EXPECT_EQ(ec.get_department(), "HR");
+}
+
+// Test the ShowContact method
+TEST(EmployeeContactTest, ShowContact) {
+    EmployeeContact ec("John", "Doe", "123-456-7890", "john.doe@example.com", 1, "Manager", "HR");
+    OutputCapturer capturer;
+    ec.ShowContact();
+    std::string output = capturer.getOutput();
+    EXPECT_EQ(output, "John Doe    Manager    HR     Room1    123-456-7890    john.doe@example.com\n");
+}
+
+// Test the accessor and mutator methods
+TEST(EmployeeContactTest, AccessorMutator) {
+    EmployeeContact ec;
+    ec.set_name(Name("John", "Doe"));
+    ec.set_business_phone("123-456-7890");
+    ec.set_email("john.doe@example.com");
+    ec.set_location(1);
+    ec.set_title("Manager");
+    ec.set_department("HR");
+
+    EXPECT_EQ(ec.get_name(), Name("John", "Doe"));
+    EXPECT_EQ(ec.get_business_phone(), "123-456-7890");
+    EXPECT_EQ(ec.get_email(), "john.doe@example.com");
+    EXPECT_EQ(ec.get_location(), 1);
+    EXPECT_EQ(ec.get_title(), "Manager");
+    EXPECT_EQ(ec.get_department(), "HR");
+}
+
+
+// Test the initialization of the ContactList
+TEST(ContactListTest, Initialization) {
+    ContactList cl;
+    EXPECT_EQ(cl.get_list(), nullptr);
+}
+
+// Test inserting contacts and ensuring the order is correct
+TEST(ContactListTest, InsertAndOrder) {
+    ContactList cl;
+    Contact* contact1 = new EmployeeContact("Alice", "Smith", "123-456-7890", "alice.smith@example.com", 1, "Manager", "HR");
+    Contact* contact2 = new ContractorContact("Bob", "Brown", 6, "TechCorp", 2, "234-567-8901", "bob.brown@example.com");
+    Contact* contact3 = new EmployeeContact("Carol", "Jones", "345-678-9012", "carol.jones@example.com", 3, "Developer", "IT");
+
+    cl.Insert(contact2);
+    cl.Insert(contact1);
+    cl.Insert(contact3);
+
+    //cl.ShowAllContacts();
+
+    Contact* current = cl.get_list();
+    EXPECT_EQ(current->get_name(), Name("Bob", "Brown"));
+    current = current->get_next();
+    EXPECT_EQ(current->get_name(), Name("Carol", "Jones"));
+    current = current->get_next();
+    EXPECT_EQ(current->get_name(), Name("Alice", "Smith"));
+}
+
+// Test searching by name
+TEST(ContactListTest, SearchByName) {
+    ContactList cl;
+    Contact* contact1 = new EmployeeContact("Alice", "Smith", "123-456-7890", "alice.smith@example.com", 1, "Manager", "HR");
+    Contact* contact2 = new ContractorContact("Bob", "Brown", 6, "TechCorp", 2, "234-567-8901", "bob.brown@example.com");
+    cl.Insert(contact1);
+    cl.Insert(contact2);
 
     std::stringstream ss;
-    ss << contact;
+    OutputCapturer capturer;
 
-    std::string expected_output = "Software Inc    6    Alice Smith    3        alice.smith@example.com";
-    EXPECT_EQ(ss.str(), expected_output);
+    cl.SearchByName(Name("Bob", "Brown"));
+    std::string output = capturer.getOutput();
+    EXPECT_EQ(output, "Bob Brown    TechCorp    6 months (contractor)     Room 2    234-567-8901    bob.brown@example.com\n");
 }
 
+// Test searching by department
+TEST(ContactListTest, SearchByDepartment) {
+    ContactList cl;
+    Contact* contact1 = new EmployeeContact("Alice", "Smith", "123-456-7890", "alice.smith@example.com", 1, "Manager", "HR");
+    Contact* contact2 = new EmployeeContact("Carol", "Jones", "345-678-9012", "carol.jones@example.com", 3, "Developer", "IT");
+    cl.Insert(contact1);
+    cl.Insert(contact2);
 
-// contactlist class
+    std::stringstream ss;
+    OutputCapturer capturer;
 
-TEST(ContactListTest, AddContact) {
-    ContactList contacts;
-
-    // Adding contacts
-    Contact* contact1 = new Contact("John", "Doe", "123456789", "john.doe@example.com", 1);
-    Contact* contact2 = new Contact("Jane", "Smith", "987654321", "jane.smith@example.com", 2);
-
-    contacts.Insert(contact1);
-    contacts.Insert(contact2);
-
-    EXPECT_EQ(contacts.get_list(), contact1); // Assuming get_list() returns the head of the list
-    EXPECT_EQ(contacts.get_list()->get_next(), contact2);
+    cl.SearchByDepartment("HR");
+    std::string output = capturer.getOutput();
+    EXPECT_EQ(output, "Alice Smith    Manager    HR     Room1    123-456-7890    alice.smith@example.com\n");
 }
 
-TEST(ContactListTest, SearchByName) {
-    ContactList contacts;
-    
-
-    // Adding contacts
-    Contact* contact1 = new Contact("John", "Doe", "123456789", "john.doe@example.com", 1);
-    Contact* contact2 = new Contact("Jane", "Smith", "987654321", "jane.smith@example.com", 2);
-
-    contacts.Insert(contact1);
-    contacts.Insert(contact2);
-
-    // Searching by name
-    Name search_name("John", "Doe");
-    Contact* found_contact = contacts.FindContact(search_name);
-
-    // Checking if the correct contact is found
-    EXPECT_EQ(found_contact, contact1);
-}
-
+// Test clearing the list
 TEST(ContactListTest, ClearList) {
-    ContactList contacts;
+    ContactList cl;
+    Contact* contact1 = new EmployeeContact("Alice", "Smith", "123-456-7890", "alice.smith@example.com", 1, "Manager", "HR");
+    cl.Insert(contact1);
+    cl.Clear();
+    EXPECT_EQ(cl.get_list(), nullptr);
+}
+
+TEST(ContactListTest, RemoveExistingContact) {
+    ContactList contactList;
+    // Populate the contact list with some contacts
+    contactList.Insert(new EmployeeContact("John", "Doe", "123-456-7890", "john.doe@example.com", 1, "Manager", "HR"));
+    contactList.Insert(new EmployeeContact("Alice", "Smith", "234-567-8901", "alice.smith@example.com", 2, "Engineer", "IT"));
+
+    Name targetName("John", "Doe");
+    Contact* removedContact = contactList.RemoveContact(targetName);
     
-    // Adding contacts
-    contacts.Init();
-    // Clearing the contact list
-    contacts.ClearList();
-
-    // Checking if the list is empty after clearing
-    EXPECT_EQ(contacts.get_list(), nullptr);
+    EXPECT_NE(removedContact, nullptr); // Check if a contact was removed
+    EXPECT_EQ(removedContact->get_name(), targetName); // Check if the correct contact was removed
+    delete removedContact; // Deallocate memory for the removed contact
 }
 
-// addressbook class
+// Test removing a contact that does not exist in the list
+TEST(ContactListTest, RemoveNonExistingContact) {
+    ContactList contactList;
+    // Populate the contact list with some contacts
+    contactList.Insert(new EmployeeContact("John", "Doe", "123-456-7890", "john.doe@example.com", 1, "Manager", "HR"));
+    contactList.Insert(new EmployeeContact("Alice", "Smith", "234-567-8901", "alice.smith@example.com", 2, "Engineer", "IT"));
 
-TEST(AddressBookTest, DefaultConstructor) {
-    AddressBook address_book;
-    EXPECT_EQ(AddressBook::DEFAULT_COMPANY_NAME, address_book.get_company_name());
+    Name targetName("Bob", "Brown"); // A contact that does not exist in the list
+    Contact* removedContact = contactList.RemoveContact(targetName);
+
+    EXPECT_EQ(removedContact, nullptr); // Check if nullptr is returned (contact not found)
 }
 
-TEST(AddressBookTest, ConstructorWithCompanyName) {
-    std::string company_name = "Test Company";
-    AddressBook address_book(company_name);
-    EXPECT_EQ(company_name, address_book.get_company_name());
+// Test if the list is properly updated after removal
+TEST(ContactListTest, ListUpdatedAfterRemoval) {
+    ContactList contactList;
+    // Populate the contact list with some contacts
+    contactList.Insert(new EmployeeContact("John", "Doe", "123-456-7890", "john.doe@example.com", 1, "Manager", "HR"));
+    contactList.Insert(new EmployeeContact("Alice", "Smith", "234-567-8901", "alice.smith@example.com", 2, "Engineer", "IT"));
+
+    Name targetName("John", "Doe");
+    Contact* removedContact = contactList.RemoveContact(targetName);
+
+    // Check if the removed contact is no longer present in the list
+    EXPECT_EQ(contactList.FindContact(targetName), nullptr);
+    delete removedContact; // Deallocate memory for the removed contact
+}
+
+// Test if the method returns the correct pointer to the removed contact
+TEST(ContactListTest, CorrectPointerReturned) {
+    ContactList contactList;
+    // Populate the contact list with some contacts
+    contactList.Insert(new EmployeeContact("John", "Doe", "123-456-7890", "john.doe@example.com", 1, "Manager", "HR"));
+    contactList.Insert(new EmployeeContact("Alice", "Smith", "234-567-8901", "alice.smith@example.com", 2, "Engineer", "IT"));
+
+    Name targetName("John", "Doe");
+    Contact* removedContact = contactList.RemoveContact(targetName);
+
+    // Check if the pointer returned points to the correct contact
+    EXPECT_EQ(removedContact->get_name(), targetName);
+    delete removedContact; // Deallocate memory for the removed contact
 }
 
 

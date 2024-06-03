@@ -21,10 +21,9 @@ using namespace std;
 
 
 int main(int argc, char* argv[]) {
-	AddressBook address_book;
-	address_book.Init();
-	address_book.Run();
-	address_book.~AddressBook();
-
-	return 0;
+    AddressBook* address_book = new AddressBook();
+    address_book->Init();
+    address_book->Run();
+    delete address_book;
+    return 0;
 }

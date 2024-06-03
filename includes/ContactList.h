@@ -15,27 +15,16 @@ public:
     void SearchByName(const Name& target_name) const;
     void SearchByDepartment(const string& department) const;
 
-    // ContactList operator=(const ContactList& other);
-    // Contact& operator[](int index);
-    // Contact& operator++();
-    // Contact& operator++(int);
-    // friend ostream& operator<<(std::ostream& outs, const ContactList& show_me);
-
     // for testing 
     Contact* get_list(); 
-    void Insert(Contact* newContact);
+    void Insert(Contact* new_node);
     Contact* FindContact(const Name& target) const;
-    void ClearList();
+    Contact* RemoveContact(const Name& target);
+    void Clear();
 
 private:
-    // Contact* FindContact(const Name& target) const;
-    // void Insert(Contact* newContact);
-    void InsertSort(Contact* newContact);
+    void InsertSort(Contact* new_node);
     void DeleteNode(Contact* target);
-    //void ClearList();
-
-    // Contact* begin();
-    // Contact* end();
 
     Contact* head;
 };
@@ -47,10 +36,9 @@ ContactList::ContactList(){
 };
 
 ContactList::~ContactList(){
-    if (g_debug == true){
+    if (g_prompts)
         cout << "contact list has been deleted" << endl;
-    }
-    ClearList();
+    Clear();
 };
 
 void ContactList::Init(){
@@ -103,17 +91,17 @@ void ContactList::Init(){
 };
 
 void ContactList::ShowAllContacts() const{
-    Contact* p_node = head;
-    while (p_node){
-        p_node->ShowContact();
-        p_node = p_node->get_next();
+    Contact* p_current = head;
+    while (p_current){
+        p_current->ShowContact();
+        p_current = p_current->get_next();
     }
 };
 
 void ContactList::SearchByName(const Name& target_name) const{
-    Contact* p_contact = FindContact(target_name);
-    if (p_contact){
-        p_contact->ShowContact();
+    Contact* p_current = FindContact(target_name);
+    if (p_current){
+        p_current->ShowContact();
     }else{
         cout << "person not found" << endl;
     }
@@ -140,59 +128,60 @@ Contact* ContactList::FindContact(const Name& target) const{
     if (!head){
         return nullptr;
     }
-    Contact* p_node = head;
-    while(p_node){
+    Contact* p_current = head;
+    while(p_current){
 
-        if (target < p_node->get_name()){
+        if (target < p_current->get_name()){
             return nullptr;
         }
-        if (target == p_node->get_name()){
-            return p_node;
+        if (target == p_current->get_name()){
+            return p_current;
         }
-        p_node = p_node->get_next();
+        p_current = p_current->get_next();
     }
     return nullptr;
 };
 
-void ContactList::Insert(Contact* newContact){
-    return InsertSort(newContact);
+
+void ContactList::Insert(Contact* new_node){
+    return InsertSort(new_node);
 };
 
-void ContactList::InsertSort(Contact* newContact){
-    if (!head){// case 1: head node is null pointer
-        head = newContact;
-    }else if(head > newContact){// case 2: insert a head
-        newContact->set_next(head);
-        head->set_previous(newContact);
-        head = newContact;
-    }else{//case 3: insert after (pre-check)
+
+void ContactList::InsertSort(Contact* new_node){
+    if (head == nullptr || *new_node < *head) {
+        new_node->set_next(head);
+        head = new_node;
+    } else {
         Contact* p_current = head;
-        while (p_current->get_next() && p_current->get_next() <= newContact) {
+        while (p_current->get_next() != nullptr && *(p_current->get_next()) < *new_node) {
             p_current = p_current->get_next();
         }
-        // Now p_current points to the last node whose name is less than or equal to newContact's name
-        Contact* p_next = p_current->get_next();
-        p_current->set_next(newContact);
-        newContact->set_previous(p_current);
-        if (p_next) {
-            p_next->set_previous(newContact);
-            newContact->set_next(p_next);
-        }
+        new_node->set_next(p_current->get_next());
+        p_current->set_next(new_node);
     }
 };
 
+Contact* ContactList::RemoveContact(const Name& target) {
+        Contact* p_current = head;
+        Contact* p_previous = nullptr;
+        while (p_current != nullptr && !(p_current->get_name() == target)) {
+            p_previous = p_current;
+            p_current = p_current->get_next();
+        }
+        if (p_current != nullptr) {
+            if (p_previous == nullptr) {
+                head = p_current->get_next();
+            } else {
+                p_previous->set_next(p_current->get_next());
+            }
+            return p_current;
+        }
 
+        return nullptr; // If contact not found
+    }
 
-void DeleteNode(Contact* target){
-    Contact* p_previous = target->get_previous();
-    Contact* p_next = target->get_next();
-
-    p_previous->set_next(p_next);
-    p_next->set_previous(p_previous);
-    delete target;
-};
-
-void ContactList::ClearList(){
+void ContactList::Clear(){
     Contact* p_current = head;
     Contact* p_next;
     while (p_current){

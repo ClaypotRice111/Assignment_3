@@ -4,7 +4,7 @@
 #include "Contact.h"
 
 
-class  ContractorContact: public Contact {
+class ContractorContact: public Contact {
 public:
     static const string DEFAULT_COMPANY;
     static const int DEFAULT_MONTH;
@@ -14,7 +14,6 @@ public:
     virtual ~ContractorContact();
 
     virtual void ShowContact()const;
-    friend ostream& operator<<(std::ostream& outs, const ContractorContact& show_me);
 
     string get_company() const;
     int get_month() const;
@@ -33,25 +32,22 @@ ContractorContact::ContractorContact():Contact(){
     this->company = DEFAULT_COMPANY;
     this->months = DEFAULT_MONTH;
 };
-ContractorContact::ContractorContact(const string& first_name, const string& last_name, const int months, const string& company, const int location, const string& bussiness_phone, const string& email):Contact(first_name, last_name, business_phone, email, location){
+ContractorContact::ContractorContact(const string& first_name, const string& last_name, 
+                                    const int months, const string& company, const int location, 
+                                    const string& business_phone, const string& email):
+                                    Contact(first_name, last_name, business_phone, email, location){
     this->company = company;
     this->months = months;
 };
 
 ContractorContact::~ContractorContact(){
-    if (g_debug == true){
+    if (g_prompts)
         cout << name << "has gone home ..."<< endl;
-    }
 };
 
 void ContractorContact::ShowContact()const{
-    cout << *this << endl;
-};
-
-ostream& operator<<(std::ostream& outs, const ContractorContact& show_me){
-    outs << show_me.company << "    " << show_me.months << "    " << show_me.name << "    " << show_me.location << "    " << show_me.business_phone << "    " << show_me.email;
-    return outs;
-};
+    cout << name << "    " << company << "    " << months << " months (contractor)    "  << " Room " << location << "    " << business_phone << "    " << email << endl;
+}
 
 string ContractorContact::get_company() const{
     return company;

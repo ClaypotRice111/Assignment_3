@@ -16,7 +16,8 @@ public:
     void Init();
     void Run();
 
-    string get_company_name();
+    string get_company_name() const;
+    void set_company_name(const string& company_name);
 
 private:
     void Menu();
@@ -24,6 +25,7 @@ private:
     void ShowAllcontacts();
     void SearchByName();
     void SearchByDepartment();
+    void Remove();
     void Quit();
 
     string company_name;
@@ -41,9 +43,8 @@ AddressBook::AddressBook(const string& company_name){
 };
 
 AddressBook::~AddressBook(){
-    if (g_debug){
-        cout << "addressbook closed..." <<endl;
-    }
+    cout << "addressbook closed..." <<endl;
+
 };
 
 void AddressBook::Init(){
@@ -59,14 +60,19 @@ void AddressBook::Run(){
             case 1: ShowAllcontacts(); break;
             case 2: SearchByName(); break;
             case 3: SearchByDepartment(); break;
-            case 4: Quit(); break;
+            case 4: Remove(); break;
+            case 5: Quit(); break;
             default: std::cout << "Invalid option. Please try again.\n";
         }
-    } while (option != 4);
+    } while (option != 5);
 };
 
-string AddressBook::get_company_name(){
+string AddressBook::get_company_name()const {
     return this->company_name;
+};
+
+void AddressBook::set_company_name(const string& company_name){
+    this->company_name = company_name;
 };
 
 void AddressBook::Menu(){
@@ -74,8 +80,9 @@ void AddressBook::Menu(){
     cout << "1. View all contacts\n";
     cout << "2. Search by name\n";
     cout << "3. Search by department\n";
-    cout << "4. Quit\n";
-    cout << "Select an option (1-4): ";
+    cout << "4. Delete contact by name\n";
+    cout << "5. Quit\n";
+    cout << "Select an option (1-5): ";
 };
 
 int AddressBook::GetUserOption(){
@@ -103,6 +110,16 @@ void AddressBook::SearchByDepartment(){
     cin >> department;
     contact_list.SearchByDepartment(department);
 };
+
+void AddressBook::Remove(){
+    string first_name, last_name;
+    cout << "Enter a contact first name: ";
+    cin >> first_name;
+    cout << "Enter a contact last name: ";
+    cin >> last_name;
+    contact_list.RemoveContact(Name(first_name, last_name));
+};
+
 
 void AddressBook::Quit(){
     cout << "Thanks for using our AddressBook. See you again!\n";
