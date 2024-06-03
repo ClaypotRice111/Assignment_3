@@ -5,6 +5,7 @@
 
 #include <iostream> 
 #include <string>
+#include <algorithm>
 #include "constant.h"
 
 
@@ -30,6 +31,10 @@ public:
 
     // ostream
     friend ostream& operator<<(std::ostream& outs, const Name& show_me);
+
+    //
+    // string LowerCase(const std::string& object);
+
 
 private:
     string last_name;
@@ -57,6 +62,9 @@ bool operator==(const Name& left, const Name& right){
     if (left.first_name == right.first_name && left.last_name == right.last_name){
         return true;
     }
+    // if (LowerCase(right.first_name) == LowerCase(right.first_name) && LowerCase(left.last_name) == LowerCase(right.last_name)){
+    //     return true;
+    // }
     return false;
 };
 
@@ -80,6 +88,13 @@ ostream& operator<<(std::ostream& outs, const Name& show_me){
     outs <<  show_me.first_name << " " << show_me.last_name;
     return outs;
 };
+
+
+// string Name::LowerCase(const std::string& object){
+//     string lower_case = object;
+//     transform(lower_case.begin(), lower_case.end(), lower_case.begin(), ::tolower);
+//     return lower_case;
+// }
 
 
 

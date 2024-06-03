@@ -15,16 +15,18 @@ public:
     void SearchByName(const Name& target_name) const;
     void SearchByDepartment(const string& department) const;
 
-    // for testing 
+    // be used for testing 
     Contact* get_list(); 
     void Insert(Contact* new_node);
-    Contact* FindContact(const Name& target) const;
+
     Contact* RemoveContact(const Name& target);
     void Clear();
 
 private:
+    void InsertHead(Contact* new_node);
     void InsertSort(Contact* new_node);
     void DeleteNode(Contact* target);
+    Contact* FindContact(const Name& target) const;
 
     Contact* head;
 };
@@ -105,7 +107,6 @@ void ContactList::SearchByName(const Name& target_name) const{
     }else{
         cout << "person not found" << endl;
     }
-
 }; 
 
 void ContactList::SearchByDepartment(const string& department) const{
@@ -147,6 +148,10 @@ void ContactList::Insert(Contact* new_node){
     return InsertSort(new_node);
 };
 
+void ContactList::InsertHead(Contact* new_node){
+    new_node->set_next(head);
+    head = new_node;
+}
 
 void ContactList::InsertSort(Contact* new_node){
     if (head == nullptr || *new_node < *head) {
@@ -163,23 +168,23 @@ void ContactList::InsertSort(Contact* new_node){
 };
 
 Contact* ContactList::RemoveContact(const Name& target) {
-        Contact* p_current = head;
-        Contact* p_previous = nullptr;
-        while (p_current != nullptr && !(p_current->get_name() == target)) {
-            p_previous = p_current;
-            p_current = p_current->get_next();
-        }
-        if (p_current != nullptr) {
-            if (p_previous == nullptr) {
-                head = p_current->get_next();
-            } else {
-                p_previous->set_next(p_current->get_next());
-            }
-            return p_current;
-        }
-
-        return nullptr; // If contact not found
+    Contact* p_current = head;
+    Contact* p_previous = nullptr;
+    while (p_current != nullptr && !(p_current->get_name() == target)) {
+        p_previous = p_current;
+        p_current = p_current->get_next();
     }
+    if (p_current != nullptr) {
+        if (p_previous == nullptr) {
+            head = p_current->get_next();
+        } else {
+            p_previous->set_next(p_current->get_next());
+        }
+        return p_current;
+    }
+
+    return nullptr; 
+}
 
 void ContactList::Clear(){
     Contact* p_current = head;

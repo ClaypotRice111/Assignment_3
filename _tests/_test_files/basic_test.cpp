@@ -335,21 +335,6 @@ TEST(ContactListTest, RemoveNonExistingContact) {
     EXPECT_EQ(removedContact, nullptr); // Check if nullptr is returned (contact not found)
 }
 
-// Test if the list is properly updated after removal
-TEST(ContactListTest, ListUpdatedAfterRemoval) {
-    ContactList contactList;
-    // Populate the contact list with some contacts
-    contactList.Insert(new EmployeeContact("John", "Doe", "123-456-7890", "john.doe@example.com", 1, "Manager", "HR"));
-    contactList.Insert(new EmployeeContact("Alice", "Smith", "234-567-8901", "alice.smith@example.com", 2, "Engineer", "IT"));
-
-    Name targetName("John", "Doe");
-    Contact* removedContact = contactList.RemoveContact(targetName);
-
-    // Check if the removed contact is no longer present in the list
-    EXPECT_EQ(contactList.FindContact(targetName), nullptr);
-    delete removedContact; // Deallocate memory for the removed contact
-}
-
 // Test if the method returns the correct pointer to the removed contact
 TEST(ContactListTest, CorrectPointerReturned) {
     ContactList contactList;

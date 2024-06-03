@@ -43,8 +43,8 @@ AddressBook::AddressBook(const string& company_name){
 };
 
 AddressBook::~AddressBook(){
-    cout << "addressbook closed..." <<endl;
-
+    if (g_prompts)
+        cout << "addressbook closed..." << endl;
 };
 
 void AddressBook::Init(){
