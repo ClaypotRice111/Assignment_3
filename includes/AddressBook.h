@@ -62,7 +62,7 @@ void AddressBook::Run(){
             case 3: SearchByDepartment(); break;
             case 4: Remove(); break;
             case 5: Quit(); break;
-            default: std::cout << "Invalid option. Please try again.\n";
+            default: cout << "Invalid option. Please try again.\n";break;
         }
     } while (option != 5);
 };

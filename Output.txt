@@ -1,0 +1,255 @@
+PS D:\lib\vscode\Assignment_3\build\bin> ."D:/lib/vscode/Assignment_3/build/bin/main.exe"
+TP Communications Address Book Menu
+1. View all contacts
+2. Search by name
+3. Search by department
+4. Delete contact by name
+5. Quit
+Select an option (1-5): 1 
+Eve Adams    Graphic Designer    Design     Room22    1-408-790-8765    evea@tpcommuniations
+Olivia Adams    Advanced Tech    8 months (contractor)     Room 13    1-408-790-5789    oliviaa@tpcommunications.com
+Rachel Allen    Superior Consultants    8 months (contractor)     Room 13    1-408-790-4101    rachela@tpcommunications.com
+Pamela Anderson    Recruiter    Human Resources     Room27    1-408-790-7653    pamelaa@tpcommuniations
+Charlie Brown    Financial Analyst    Finance     Room28    1-408-790-9876    charlieb@tpcommuniations
+David Brown    Strategic Advisors    9 months (contractor)     Room 14    1-408-790-1456    davidb@tpcommunications.com
+Xander Cage    Technical Writer    Documentation     Room28    1-408-790-4320    xanderc@tpcommuniations
+Brian Clark    Future Consultants    5 months (contractor)     Room 7    1-408-790-2678    brianc@tpcommunications.com
+Jack Daniels    Business Analyst    Business     Room29    1-408-790-6540    jackd@tpcommuniations
+Emily Davis    Creative Consultancy    4 months (contractor)     Room 6    1-408-790-1123    emilyd@tpcommunications.com
+John Doe    ABC Corp    5 months (contractor)     Room 7    1-408-790-1234    johnd@tpcommunications.com
+Anna Garcia    Advanced Insights    8 months (contractor)     Room 13    1-408-790-2345    annag@tpcommunications.com
+Ivy Green    HR Manager    Human Resources     Room31    1-408-790-3210    ivyg@tpcommuniations
+Nathan Green    NextGen Advisors    7 months (contractor)     Room 11    1-408-790-5456    nathang@tpcommunications.com
+Rachel Green    Sales Representative    Sales     Room25    1-408-790-3211    rachelg@tpcommuniations
+Daniel Hall    Optimal Strategies    7 months (contractor)     Room 11    1-408-790-3789    danielh@tpcommunications.com
+Sophia Hernandez    Tech Visionaries    9 months (contractor)     Room 14    1-408-790-4678    sophiah@tpcommunications.com
+Grace Hopper    Software Developer    Engineering     Room33    1-408-790-6543    graceh@tpcommuniations
+Victor Hugo    Network Engineer    IT     Room35    1-408-790-6789    victorh@tpcommuniations
+Steve Jobs    Chief Executive Officer    Executive     Room37    1-408-790-4567    stevej@tpcommuniations
+Alice Johnson    Marketing Manager    Marketing     Room25    1-408-790-1234    alicej@tpcommuniations
+Michael Johnson    Tech Innovators    10 months (contractor)     Room 15    1-408-790-9101    michaelj@tpcommunications.com
+Quincy Jones    Project Manager    Operations     Room29    1-408-790-1230    quincyj@tpcommuniations
+Joshua King    Bright Futures    10 months (contractor)     Room 15    1-408-790-4901    joshuak@tpcommunications.com
+Kevin Lewis    Prime Consults    10 months (contractor)     Room 15    1-408-790-3123    kevinl@tpcommunications.com
+Mona Lisa    Data Scientist    Data     Room32    1-408-790-7654    monal@tpcommuniations
+Chris Martinez    Innovative Minds    6 months (contractor)     Room 10    1-408-790-2101    chrism@tpcommunications.com
+Wanda Maximoff    Security Analyst    IT     Room30    1-408-790-9875    wandam@tpcommuniations
+Frank Miller    Operations Manager    Operations     Room27    1-408-790-3456    frankm@tpcommuniations
+Zack Morris    Customer Service Rep    Customer Support     Room29    1-408-790-5431    zackm@tpcommuniations
+Leo Nardo    UX Designer    Design     Room36    1-408-790-5432    leon@tpcommuniations
+Diana Prince    Product Manager    Product     Room35    1-408-790-4321    dianap@tpcommuniations
+Hank Pym    Chemist    Research     Room26    1-408-790-7890    hankp@tpcommuniations
+Jessica Rodriguez    Elite Solutions    9 months (contractor)     Room 12    1-408-790-2901    jessicar@tpcommunications.com
+Megan Scott    Pro Consults    6 months (contractor)     Room 9    1-408-790-5123    megans@tpcommunications.com
+Nina Simone    Accountant    Finance     Room28    1-408-790-8764    ninas@tpcommuniations
+Bob Smith    Sales Executive    Sales     Room30    1-408-790-5678    bobs@tpcommuniations
+Jane Smith    XYZ Solutions    8 months (contractor)     Room 12    1-408-790-5678    janes@tpcommunications.com
+Karen Smith    Content Writer    Marketing     Room24    1-408-790-2345    karens@tpcommuniations
+Yvonne Strahovski    Digital Marketer    Marketing     Room27    1-408-790-8763    yvonnes@tpcommuniations
+Uma Thurman    Quality Assurance    Engineering     Room26    1-408-790-2341    umat@tpcommuniations
+Tina Turner    Support Specialist    Customer Support     Room31    1-408-790-7891    tinat@tpcommuniations
+Laura Walker    Trusted Partners    6 months (contractor)     Room 9    1-408-790-3456    lauraw@tpcommunications.com
+Oscar Wilde    Legal Advisor    Legal     Room34    1-408-790-0987    oscarw@tpcommuniations
+Sarah Wilson    Solution Seekers    7 months (contractor)     Room 11    1-408-790-1789    sarahw@tpcommunications.com
+Matthew Young    Insight Experts    5 months (contractor)     Room 6    1-408-790-4345    matthewy@tpcommunications.com
+TP Communications Address Book Menu
+1. View all contacts
+2. Search by name
+3. Search by department
+4. Delete contact by name
+5. Quit
+Select an option (1-5): 2
+Enter a contact first name: sdf
+Enter a contact last name: sadf
+person not found
+TP Communications Address Book Menu
+1. View all contacts
+2. Search by name
+3. Search by department
+4. Delete contact by name
+5. Quit
+Select an option (1-5): 2
+Enter a contact first name: Eve
+Enter a contact last name: Adams
+Eve Adams    Graphic Designer    Design     Room22    1-408-790-8765    evea@tpcommuniations
+TP Communications Address Book Menu
+1. View all contacts
+2. Search by name
+3. Search by department
+4. Delete contact by name
+5. Quit
+Select an option (1-5): 2
+Enter a contact first name: Tina
+Enter a contact last name: Turner
+Tina Turner    Support Specialist    Customer Support     Room31    1-408-790-7891    tinat@tpcommuniations
+TP Communications Address Book Menu
+1. View all contacts
+2. Search by name
+3. Search by department
+4. Delete contact by name
+5. Quit
+Select an option (1-5): 2
+Enter a contact first name: Matthew
+Enter a contact last name: Young
+Matthew Young    Insight Experts    5 months (contractor)     Room 6    1-408-790-4345    matthewy@tpcommunications.com
+TP Communications Address Book Menu
+1. View all contacts
+2. Search by name
+3. Search by department
+4. Delete contact by name
+5. Quit
+Select an option (1-5): 3
+Enter a department: asfdfd
+TP Communications Address Book Menu
+1. View all contacts
+2. Search by name
+3. Search by department
+4. Delete contact by name
+5. Quit
+Select an option (1-5): 3
+Enter a department: Data
+Mona Lisa    Data Scientist    Data     Room32    1-408-790-7654    monal@tpcommuniations
+TP Communications Address Book Menu
+1. View all contacts
+2. Search by name
+3. Search by department
+4. Delete contact by name
+5. Quit
+Select an option (1-5): 3
+Enter a department: IT
+Victor Hugo    Network Engineer    IT     Room35    1-408-790-6789    victorh@tpcommuniations
+Wanda Maximoff    Security Analyst    IT     Room30    1-408-790-9875    wandam@tpcommuniations
+TP Communications Address Book Menu
+1. View all contacts
+2. Search by name
+3. Search by department
+4. Delete contact by name
+5. Quit
+Select an option (1-5): 1
+Eve Adams    Graphic Designer    Design     Room22    1-408-790-8765    evea@tpcommuniations
+Olivia Adams    Advanced Tech    8 months (contractor)     Room 13    1-408-790-5789    oliviaa@tpcommunications.com
+Rachel Allen    Superior Consultants    8 months (contractor)     Room 13    1-408-790-4101    rachela@tpcommunications.com
+Pamela Anderson    Recruiter    Human Resources     Room27    1-408-790-7653    pamelaa@tpcommuniations
+Charlie Brown    Financial Analyst    Finance     Room28    1-408-790-9876    charlieb@tpcommuniations
+David Brown    Strategic Advisors    9 months (contractor)     Room 14    1-408-790-1456    davidb@tpcommunications.com
+Xander Cage    Technical Writer    Documentation     Room28    1-408-790-4320    xanderc@tpcommuniations
+Brian Clark    Future Consultants    5 months (contractor)     Room 7    1-408-790-2678    brianc@tpcommunications.com
+Jack Daniels    Business Analyst    Business     Room29    1-408-790-6540    jackd@tpcommuniations
+Emily Davis    Creative Consultancy    4 months (contractor)     Room 6    1-408-790-1123    emilyd@tpcommunications.com
+John Doe    ABC Corp    5 months (contractor)     Room 7    1-408-790-1234    johnd@tpcommunications.com
+Anna Garcia    Advanced Insights    8 months (contractor)     Room 13    1-408-790-2345    annag@tpcommunications.com
+Ivy Green    HR Manager    Human Resources     Room31    1-408-790-3210    ivyg@tpcommuniations
+Nathan Green    NextGen Advisors    7 months (contractor)     Room 11    1-408-790-5456    nathang@tpcommunications.com
+Rachel Green    Sales Representative    Sales     Room25    1-408-790-3211    rachelg@tpcommuniations
+Daniel Hall    Optimal Strategies    7 months (contractor)     Room 11    1-408-790-3789    danielh@tpcommunications.com
+Sophia Hernandez    Tech Visionaries    9 months (contractor)     Room 14    1-408-790-4678    sophiah@tpcommunications.com
+Grace Hopper    Software Developer    Engineering     Room33    1-408-790-6543    graceh@tpcommuniations
+Victor Hugo    Network Engineer    IT     Room35    1-408-790-6789    victorh@tpcommuniations
+Steve Jobs    Chief Executive Officer    Executive     Room37    1-408-790-4567    stevej@tpcommuniations
+Alice Johnson    Marketing Manager    Marketing     Room25    1-408-790-1234    alicej@tpcommuniations
+Michael Johnson    Tech Innovators    10 months (contractor)     Room 15    1-408-790-9101    michaelj@tpcommunications.com
+Quincy Jones    Project Manager    Operations     Room29    1-408-790-1230    quincyj@tpcommuniations
+Joshua King    Bright Futures    10 months (contractor)     Room 15    1-408-790-4901    joshuak@tpcommunications.com
+Kevin Lewis    Prime Consults    10 months (contractor)     Room 15    1-408-790-3123    kevinl@tpcommunications.com
+Mona Lisa    Data Scientist    Data     Room32    1-408-790-7654    monal@tpcommuniations
+Chris Martinez    Innovative Minds    6 months (contractor)     Room 10    1-408-790-2101    chrism@tpcommunications.com
+Wanda Maximoff    Security Analyst    IT     Room30    1-408-790-9875    wandam@tpcommuniations
+Frank Miller    Operations Manager    Operations     Room27    1-408-790-3456    frankm@tpcommuniations
+Zack Morris    Customer Service Rep    Customer Support     Room29    1-408-790-5431    zackm@tpcommuniations
+Leo Nardo    UX Designer    Design     Room36    1-408-790-5432    leon@tpcommuniations
+Diana Prince    Product Manager    Product     Room35    1-408-790-4321    dianap@tpcommuniations
+Hank Pym    Chemist    Research     Room26    1-408-790-7890    hankp@tpcommuniations
+Jessica Rodriguez    Elite Solutions    9 months (contractor)     Room 12    1-408-790-2901    jessicar@tpcommunications.com
+Megan Scott    Pro Consults    6 months (contractor)     Room 9    1-408-790-5123    megans@tpcommunications.com
+Nina Simone    Accountant    Finance     Room28    1-408-790-8764    ninas@tpcommuniations
+Bob Smith    Sales Executive    Sales     Room30    1-408-790-5678    bobs@tpcommuniations
+Jane Smith    XYZ Solutions    8 months (contractor)     Room 12    1-408-790-5678    janes@tpcommunications.com
+Karen Smith    Content Writer    Marketing     Room24    1-408-790-2345    karens@tpcommuniations
+Yvonne Strahovski    Digital Marketer    Marketing     Room27    1-408-790-8763    yvonnes@tpcommuniations
+Uma Thurman    Quality Assurance    Engineering     Room26    1-408-790-2341    umat@tpcommuniations
+Tina Turner    Support Specialist    Customer Support     Room31    1-408-790-7891    tinat@tpcommuniations
+Laura Walker    Trusted Partners    6 months (contractor)     Room 9    1-408-790-3456    lauraw@tpcommunications.com
+Oscar Wilde    Legal Advisor    Legal     Room34    1-408-790-0987    oscarw@tpcommuniations
+Sarah Wilson    Solution Seekers    7 months (contractor)     Room 11    1-408-790-1789    sarahw@tpcommunications.com
+Matthew Young    Insight Experts    5 months (contractor)     Room 6    1-408-790-4345    matthewy@tpcommunications.com
+TP Communications Address Book Menu
+1. View all contacts
+2. Search by name
+3. Search by department
+4. Delete contact by name
+5. Quit
+Select an option (1-5): 4
+Enter a contact first name: Leo
+Enter a contact last name: Nardo
+TP Communications Address Book Menu
+1. View all contacts
+2. Search by name
+3. Search by department
+4. Delete contact by name
+5. Quit
+Select an option (1-5): 1
+Eve Adams    Graphic Designer    Design     Room22    1-408-790-8765    evea@tpcommuniations
+Olivia Adams    Advanced Tech    8 months (contractor)     Room 13    1-408-790-5789    oliviaa@tpcommunications.com
+Rachel Allen    Superior Consultants    8 months (contractor)     Room 13    1-408-790-4101    rachela@tpcommunications.com
+Pamela Anderson    Recruiter    Human Resources     Room27    1-408-790-7653    pamelaa@tpcommuniations
+Charlie Brown    Financial Analyst    Finance     Room28    1-408-790-9876    charlieb@tpcommuniations
+David Brown    Strategic Advisors    9 months (contractor)     Room 14    1-408-790-1456    davidb@tpcommunications.com
+Xander Cage    Technical Writer    Documentation     Room28    1-408-790-4320    xanderc@tpcommuniations
+Brian Clark    Future Consultants    5 months (contractor)     Room 7    1-408-790-2678    brianc@tpcommunications.com
+Jack Daniels    Business Analyst    Business     Room29    1-408-790-6540    jackd@tpcommuniations
+Emily Davis    Creative Consultancy    4 months (contractor)     Room 6    1-408-790-1123    emilyd@tpcommunications.com
+John Doe    ABC Corp    5 months (contractor)     Room 7    1-408-790-1234    johnd@tpcommunications.com
+Anna Garcia    Advanced Insights    8 months (contractor)     Room 13    1-408-790-2345    annag@tpcommunications.com
+Ivy Green    HR Manager    Human Resources     Room31    1-408-790-3210    ivyg@tpcommuniations
+Nathan Green    NextGen Advisors    7 months (contractor)     Room 11    1-408-790-5456    nathang@tpcommunications.com
+Rachel Green    Sales Representative    Sales     Room25    1-408-790-3211    rachelg@tpcommuniations
+Daniel Hall    Optimal Strategies    7 months (contractor)     Room 11    1-408-790-3789    danielh@tpcommunications.com
+Sophia Hernandez    Tech Visionaries    9 months (contractor)     Room 14    1-408-790-4678    sophiah@tpcommunications.com
+Grace Hopper    Software Developer    Engineering     Room33    1-408-790-6543    graceh@tpcommuniations
+Victor Hugo    Network Engineer    IT     Room35    1-408-790-6789    victorh@tpcommuniations
+Steve Jobs    Chief Executive Officer    Executive     Room37    1-408-790-4567    stevej@tpcommuniations
+Alice Johnson    Marketing Manager    Marketing     Room25    1-408-790-1234    alicej@tpcommuniations
+Michael Johnson    Tech Innovators    10 months (contractor)     Room 15    1-408-790-9101    michaelj@tpcommunications.com
+Quincy Jones    Project Manager    Operations     Room29    1-408-790-1230    quincyj@tpcommuniations
+Joshua King    Bright Futures    10 months (contractor)     Room 15    1-408-790-4901    joshuak@tpcommunications.com
+Kevin Lewis    Prime Consults    10 months (contractor)     Room 15    1-408-790-3123    kevinl@tpcommunications.com
+Mona Lisa    Data Scientist    Data     Room32    1-408-790-7654    monal@tpcommuniations
+Chris Martinez    Innovative Minds    6 months (contractor)     Room 10    1-408-790-2101    chrism@tpcommunications.com
+Wanda Maximoff    Security Analyst    IT     Room30    1-408-790-9875    wandam@tpcommuniations
+Frank Miller    Operations Manager    Operations     Room27    1-408-790-3456    frankm@tpcommuniations
+Zack Morris    Customer Service Rep    Customer Support     Room29    1-408-790-5431    zackm@tpcommuniations
+Diana Prince    Product Manager    Product     Room35    1-408-790-4321    dianap@tpcommuniations
+Hank Pym    Chemist    Research     Room26    1-408-790-7890    hankp@tpcommuniations
+Jessica Rodriguez    Elite Solutions    9 months (contractor)     Room 12    1-408-790-2901    jessicar@tpcommunications.com
+Megan Scott    Pro Consults    6 months (contractor)     Room 9    1-408-790-5123    megans@tpcommunications.com
+Nina Simone    Accountant    Finance     Room28    1-408-790-8764    ninas@tpcommuniations
+Bob Smith    Sales Executive    Sales     Room30    1-408-790-5678    bobs@tpcommuniations
+Jane Smith    XYZ Solutions    8 months (contractor)     Room 12    1-408-790-5678    janes@tpcommunications.com
+Karen Smith    Content Writer    Marketing     Room24    1-408-790-2345    karens@tpcommuniations
+Yvonne Strahovski    Digital Marketer    Marketing     Room27    1-408-790-8763    yvonnes@tpcommuniations
+Uma Thurman    Quality Assurance    Engineering     Room26    1-408-790-2341    umat@tpcommuniations
+Tina Turner    Support Specialist    Customer Support     Room31    1-408-790-7891    tinat@tpcommuniations
+Laura Walker    Trusted Partners    6 months (contractor)     Room 9    1-408-790-3456    lauraw@tpcommunications.com
+Oscar Wilde    Legal Advisor    Legal     Room34    1-408-790-0987    oscarw@tpcommuniations
+Sarah Wilson    Solution Seekers    7 months (contractor)     Room 11    1-408-790-1789    sarahw@tpcommunications.com
+Matthew Young    Insight Experts    5 months (contractor)     Room 6    1-408-790-4345    matthewy@tpcommunications.com
+TP Communications Address Book Menu
+1. View all contacts
+2. Search by name
+3. Search by department
+4. Delete contact by name
+5. Quit
+Select an option (1-5): 2
+Enter a contact first name: Leo
+Enter a contact last name: Nardo
+person not found
+TP Communications Address Book Menu
+1. View all contacts
+2. Search by name
+3. Search by department
+4. Delete contact by name
+5. Quit
+Select an option (1-5): 5
+Thanks for using our AddressBook. See you again!
+libgcov profiling error:D:\lib\vscode\Assignment_3\build\CMakeFiles\main.dir\main.cpp.gcda:overwriting an existing profile data with a different checksum
+PS D:\lib\vscode\Assignment_3\build\bin>

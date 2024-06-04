@@ -116,9 +116,12 @@ void ContactList::SearchByDepartment(const string& department) const{
         EmployeeContact* p_empmployee_contact = dynamic_cast<EmployeeContact*>(p_current);
         if (p_empmployee_contact && p_empmployee_contact->get_department() == department) {
             p_empmployee_contact->ShowContact();
+            return;
         }
         p_current = p_current->get_next();
     }
+    if (g_prompts)
+        cout << "department not found ... "<< endl;
 };
 
 Contact* ContactList::get_list(){
